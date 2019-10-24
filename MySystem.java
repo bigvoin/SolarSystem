@@ -2,7 +2,10 @@ public class MySystem
 {
     private SolarSystem solar = new SolarSystem(700,700);
     private Sun mysun = new Sun("Sun",0,0,50,"yellow");
-    private Planets myplanet = new Planets("Earth",64,180,20,"blue",0.29);
+    private Planets firstp = new Planets("Mercury",50,120,15,"cyan",1);
+    private Planets secondp = new Planets("Venus",70,150,20,"white",1);
+    private Planets thirdp = new Planets("Earth",90,180,30,"blue",1);
+    private Planets fourthp = new Planets("Mars",120,210,30,"red",1);
     
     public MySystem()
     {
@@ -19,8 +22,14 @@ public class MySystem
     {
         while(true)
         {
-        this.drawPlanetOrbitStar(mysun, myplanet);
-        myplanet.move();
+        this.drawPlanetOrbitStar(mysun, firstp);
+        firstp.move();
+        this.drawPlanetOrbitStar(mysun, secondp);
+        secondp.move();
+        this.drawPlanetOrbitStar(mysun, thirdp);
+        thirdp.move();
+        this.drawPlanetOrbitStar(mysun, fourthp);
+        fourthp.move();
         solar.finishedDrawing();
         }
     }
