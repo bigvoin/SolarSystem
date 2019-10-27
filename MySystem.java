@@ -3,12 +3,13 @@ public class MySystem
     private SolarSystem solar = new SolarSystem(1000,1000);
     private Sun mysun = new Sun("Sun",0,0,100,"yellow");
     private int numberPlanets = 5;
-    private int numberMoons = 10;
+    private int numberMoons = 41;
     private int numberAsteroids = 360;
     private double y=100;
+    private double x=50;
     private Asteroid[] a = new Asteroid[numberAsteroids];
     private Planets[] p = new Planets[numberPlanets];
-    private Moon[] m = new Moon[numberMoons];
+    private Moon[] moons = new Moon[numberMoons];
     
     public MySystem()
     {
@@ -45,14 +46,19 @@ public class MySystem
         p[3] = new Planets("Mars",300,40,30,"red",0.20);
         p[4] = new Planets("Jupiter",400,20,100,"orange",0.20);
 
-        m[0] = new Moon("The Moon",25,20,5,"white",0.50);
-        m[1] = new Moon("Moon",60,20,9,"magenta",1);
-        m[2] = new Moon("Moon",70,30,9,"white",0.3);
-        m[3] = new Moon("Moon",80,40,9,"blue",0.5);
+        moons[0] = new Moon("The Moon",25,20,5,"white",0.50);
+
+
         for(int k=0; k<numberAsteroids; k++)
         {
             a[k] = new Asteroid("test", 470, y, 5, "white", 0.2);
             y=y+1;
+        }
+
+        for(int m=1; m<numberMoons; m++)
+        {
+            moons[m] = new Moon("Moon",60,x,5,"gray",0.3);
+            x=x+15;
         }
 
         while(true)
@@ -62,14 +68,14 @@ public class MySystem
                 this.PlanetOrbitStar(mysun, p[i]);
                 p[i].move();
             }
-                this.MoonOrbitPlanet(p[2], m[0]);
-                m[0].move();
+                this.MoonOrbitPlanet(p[2], moons[0]);
+                moons[0].move();
 
-                for(int j=1; j<4; j++)
+                for(int j=1; j<numberMoons; j++)
                 {
                     
-                    this.MoonOrbitPlanet(p[4], m[j]);
-                    m[j].move();
+                    this.MoonOrbitPlanet(p[4], moons[j]);
+                    moons[j].move();
                 }
             for(int i=0; i<numberAsteroids; i++)
         {
